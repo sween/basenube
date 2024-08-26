@@ -44,7 +44,7 @@ metadata:
   labels:
     org: empire
     class: medicaldroid
-    app.kubernetes.io/name: fx6
+    app.kubernetes.io/name: coruscanthealth
 spec:
   containers:
   - name: fx-6
