@@ -45,6 +45,7 @@ metadata:
     org: empire
     class: medicaldroid
     app.kubernetes.io/name: fx6
+spec:
   containers:
   - name: fx-6
     image: scrapinghub/httpbin:latest
