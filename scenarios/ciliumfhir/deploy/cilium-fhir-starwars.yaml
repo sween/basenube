@@ -36,38 +36,38 @@ spec:
       - name: coruscanthealth
         image: docker.io/sween/ciliumfhir
         imagePullPolicy: IfNotPresent
-#---
-#apiVersion: apps/v1
-#kind: Deployment
-#metadata:
-#  name: fx-6
-#  labels:
-#    app.kubernetes.io/name: fx-6
-#spec:
-#  replicas: 1
-#  selector:
-#    matchLabels:
-#      org: empire
-#      class: medicaldroid
-#  template:
-#    metadata:
-#      labels:
-#        org: empire
-#        class: medicaldroid
-#        app.kubernetes.io/name: fx-6
-#    spec:
-#      containers:
-#      - name: fx-6
-#        image: scrapinghub/httpbin:latest
-#        imagePullPolicy: IfNotPresent
-#        command:
-#          - "sh"
-#          - "-c"
-#          - >
-#            while true; do
-#              sleep 10;
-#              curl http://coruscanthealth:52773/intersystems/fhir/r5/metadata;
-#            done
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fx-6
+  labels:
+    app.kubernetes.io/name: fx-6
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      org: empire
+      class: medicaldroid
+  template:
+    metadata:
+      labels:
+        org: empire
+        class: medicaldroid
+        app.kubernetes.io/name: fx-6
+    spec:
+      containers:
+      - name: fx-6
+        image: scrapinghub/httpbin:latest
+        imagePullPolicy: IfNotPresent
+        command:
+          - "sh"
+          - "-c"
+          - >
+            while true; do
+              sleep 10;
+              curl http://coruscanthealth:52773/intersystems/fhir/r5/metadata;
+            done
 ---
 apiVersion: v1
 kind: Pod
