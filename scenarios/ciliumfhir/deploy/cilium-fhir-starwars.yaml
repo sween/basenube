@@ -1,0 +1,90 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+name: coruscantfhir
+labels:
+app.kubernetes.io/name: coruscantfhir
+spec:
+type: ClusterIP
+ports:
+- port: 52773
+selector:
+org: empire
+class: coruscantfhir
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+name: coruscantfhir
+labels:
+app.kubernetes.io/name: coruscantfhir
+spec:
+replicas: 1
+selector:
+matchLabels:
+org: empire
+class: coruscantfhir
+template:
+metadata:
+labels:
+org: empire
+class: coruscantfhir
+app.kubernetes.io/name: coruscantfhir
+spec:
+containers:
+- name: coruscantfhir
+image: docker.io/sween/ciliumfhir
+imagePullPolicy: IfNotPresent
+---
+apiVersion: v1
+kind: Pod
+metadata:
+name: fx-6
+labels:
+org: empire
+class: medicaldroid
+app.kubernetes.io/name: fx-6
+spec:
+containers:
+- name: fx-6
+image: docker.io/curlimages/curl
+---
+apiVersion: v1
+kind: Pod
+metadata:
+name: dd-13
+labels:
+org: empire
+class: medicaldroid
+app.kubernetes.io/name: dd-13
+spec:
+containers:
+- name: dd-13
+image: docker.io/curlimages/curl
+---
+apiVersion: v1
+kind: Pod
+metadata:
+name: 2-1b
+labels:
+org: empire
+class: medicaldroid
+app.kubernetes.io/name: 2-1b
+spec:
+containers:
+- name: 2-1b
+image: docker.io/curlimages/curl
+---
+apiVersion: v1
+kind: Pod
+metadata:
+name: priorauth
+labels:
+app.kubernetes.io/name: priorauth
+org: payer
+class: priorauth
+spec:
+containers:
+- name: priorauth
+image: docker.io/curlimages/curl

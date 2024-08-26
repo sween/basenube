@@ -24,11 +24,13 @@ ClassMethod Setup() As %Status
     Set configData.DefaultPreferHandling = "strict"
     Set configData.DebugMode = 5
     Set enabled = 1
+    Set serviceConfigName = "HS.InteropPackage.myBusinessService"
+    Set oAuthClient = "OAuthClientName"
     //stringify configData before updating FHIR Server
     Set jsonConfigData = configData.AsJSONString()
     
     // Update FHIR Server
-    Do ##class(HS.FHIRServer.Installer).UpdateInstance(appKey, jsonConfigData, enabled,,)
+    Do ##class(HS.FHIRServer.Installer).UpdateInstance(appKey, jsonConfigData, enabled,serviceConfigName)
 
 }
 
