@@ -45,6 +45,10 @@ metadata:
     org: empire
     class: medicaldroid
     app.kubernetes.io/name: fx-6
+  selector:
+    matchLabels:
+      org: empire
+      class: medicaldroid
 spec:
   containers:
   - name: fx-6
