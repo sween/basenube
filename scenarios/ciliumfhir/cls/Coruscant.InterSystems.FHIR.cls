@@ -3,6 +3,7 @@ Class Coruscant.InterSystems.FHIR
 
 ClassMethod Setup() As %Status
 {
+    zn "HSLIB"
     Set appKey = "/intersystems/fhir/r5"
     Set strategyClass = "HS.FHIRServer.Storage.JsonAdvSQL.InteractionsStrategy"
     Set metadataPackages = $lb("hl7.fhir.r5.core@5.0.0")
