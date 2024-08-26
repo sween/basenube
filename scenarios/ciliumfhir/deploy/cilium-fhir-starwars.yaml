@@ -4,7 +4,7 @@ kind: Service
 metadata:
   name: coruscanthealth
   labels:
-    app.kubernetes.io/name: coruscanthealth
+    app.kubernetes.io/name: coruscanthealth-fhir
 spec:
   type: ClusterIP
   ports:
