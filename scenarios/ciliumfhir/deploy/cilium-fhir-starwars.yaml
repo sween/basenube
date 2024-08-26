@@ -137,7 +137,7 @@ kind: Pod
 metadata:
   name: payer
   labels:
-    app.kubernetes.io/name: payer
+    app.kubernetes.io/name: coruscanthealth
     org: republic
     class: payer
 spec:
