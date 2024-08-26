@@ -1,0 +1,17 @@
+apiVersion: cilium.io/v2
+kind: CiliumNetworkPolicy
+metadata:
+  name: http-ingress-visibility
+spec:
+  endpointSelector:
+    matchLabels: {}
+  ingress:
+    - fromEntities:
+        - all
+    - toPorts:
+        - ports:
+            - port: "52773"
+              protocol: "TCP"
+          rules:
+            http:
+              - {}
