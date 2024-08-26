@@ -48,7 +48,7 @@ metadata:
 spec:
   containers:
   - name: fx-6
-    image: docker.io/curlimages/curl
+    image: scrapinghub/httpbin:latest
 ---
 apiVersion: v1
 kind: Pod
@@ -61,7 +61,7 @@ metadata:
 spec:
   containers:
   - name: dd-13
-    image: docker.io/curlimages/curl
+    image: scrapinghub/httpbin:latest
 ---
 apiVersion: v1
 kind: Pod
@@ -74,7 +74,7 @@ metadata:
 spec:
   containers:
   - name: 2-1b
-    image: docker.io/curlimages/curl
+    image: scrapinghub/httpbin:latest
 ---
 apiVersion: v1
 kind: Pod
@@ -87,4 +87,4 @@ metadata:
 spec:
   containers:
   - name: payer
-    image: docker.io/curlimages/curl
+    image: scrapinghub/httpbin:latest
