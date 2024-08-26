@@ -82,14 +82,14 @@ spec:
 apiVersion: v1
 kind: Pod
 metadata:
-  name: 2-1b
+  name: 21b
   labels:
     org: empire
     class: medicaldroid
     app.kubernetes.io/name: 21b
 spec:
   containers:
-  - name: 2-1b
+  - name: 21b
     image: scrapinghub/httpbin:latest
     command:
       - "sh"
