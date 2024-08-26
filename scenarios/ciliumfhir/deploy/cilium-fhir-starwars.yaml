@@ -64,7 +64,7 @@ metadata:
   labels:
     org: empire
     class: medicaldroid
-    app.kubernetes.io/name: dd-13
+    app.kubernetes.io/name: dd13
 spec:
   containers:
   - name: dd-13
@@ -85,7 +85,7 @@ metadata:
   labels:
     org: empire
     class: medicaldroid
-    app.kubernetes.io/name: 2-1b
+    app.kubernetes.io/name: 21b
 spec:
   containers:
   - name: 2-1b
