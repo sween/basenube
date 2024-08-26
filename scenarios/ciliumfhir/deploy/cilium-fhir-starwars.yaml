@@ -3,7 +3,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: coruscanthealth
-  namespace: coruscant
+  namespace: in-network
   labels:
     app.kubernetes.io/name: coruscanthealth
 spec:
