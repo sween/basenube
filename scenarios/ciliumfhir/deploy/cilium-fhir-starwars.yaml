@@ -149,7 +149,7 @@ spec:
     metadata:
       labels:
         org: empire
-        class: medicaldroid
+        class: payer
         app.kubernetes.io/name: payer
     spec:
       containers:
