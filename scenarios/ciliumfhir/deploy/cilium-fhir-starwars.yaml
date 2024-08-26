@@ -49,6 +49,14 @@ spec:
   containers:
   - name: fx-6
     image: scrapinghub/httpbin:latest
+    command:
+      - "sh"
+      - "-c"
+      - >
+        while true; do
+          sleep 10;
+          curl http://coruscanthealth:52773/intersystems/fhir/r5/metadata;
+        done
 ---
 apiVersion: v1
 kind: Pod
@@ -62,6 +70,14 @@ spec:
   containers:
   - name: dd-13
     image: scrapinghub/httpbin:latest
+    command:
+      - "sh"
+      - "-c"
+      - >
+        while true; do
+          sleep 10;
+          curl http://coruscanthealth:52773/intersystems/fhir/r5/metadata;
+        done
 ---
 apiVersion: v1
 kind: Pod
@@ -75,6 +91,14 @@ spec:
   containers:
   - name: 2-1b
     image: scrapinghub/httpbin:latest
+    command:
+      - "sh"
+      - "-c"
+      - >
+        while true; do
+          sleep 10;
+          curl http://coruscanthealth:52773/intersystems/fhir/r5/metadata;
+        done
 ---
 apiVersion: v1
 kind: Pod
@@ -88,3 +112,11 @@ spec:
   containers:
   - name: payer
     image: scrapinghub/httpbin:latest
+    command:
+      - "sh"
+      - "-c"
+      - >
+        while true; do
+          sleep 10;
+          curl http://coruscanthealth:52773/intersystems/fhir/r5/metadata;
+        done
