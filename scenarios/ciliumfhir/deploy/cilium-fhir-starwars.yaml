@@ -69,86 +69,98 @@ spec:
               curl http://coruscanthealth:52773/intersystems/fhir/r5/metadata;
             done
 ---
-apiVersion: v1
-kind: Pod
-metadata:
-  name: fx-6
-  labels:
-    org: empire
-    class: medicaldroid
-    app.kubernetes.io/name: coruscanthealth
-spec:
-  containers:
-  - name: fx-6
-    image: scrapinghub/httpbin:latest
-    command:
-      - "sh"
-      - "-c"
-      - >
-        while true; do
-          sleep 10;
-          curl http://coruscanthealth:52773/intersystems/fhir/r5/metadata;
-        done
----
-apiVersion: v1
-kind: Pod
+apiVersion: apps/v1
+kind: Deployment
 metadata:
   name: dd-13
   labels:
-    org: empire
-    class: medicaldroid
-    app.kubernetes.io/name: coruscanthealth
+    app.kubernetes.io/name: dd-13
 spec:
-  containers:
-  - name: dd-13
-    image: scrapinghub/httpbin:latest
-    command:
-      - "sh"
-      - "-c"
-      - >
-        while true; do
-          sleep 10;
-          curl http://coruscanthealth:52773/intersystems/fhir/r5/metadata;
-        done
+  replicas: 1
+  selector:
+    matchLabels:
+      org: empire
+      class: medicaldroid
+  template:
+    metadata:
+      labels:
+        org: empire
+        class: medicaldroid
+        app.kubernetes.io/name: dd-13
+    spec:
+      containers:
+      - name: fx-6
+        image: scrapinghub/httpbin:latest
+        imagePullPolicy: IfNotPresent
+        command:
+          - "sh"
+          - "-c"
+          - >
+            while true; do
+              sleep 10;
+              curl http://coruscanthealth:52773/intersystems/fhir/r5/metadata;
+            done
 ---
-apiVersion: v1
-kind: Pod
+apiVersion: apps/v1
+kind: Deployment
 metadata:
-  name: 2-1b
+  name: 21-b
   labels:
-    org: empire
-    class: medicaldroid
-    app.kubernetes.io/name: coruscanthealth
+    app.kubernetes.io/name: 21-b
 spec:
-  containers:
-  - name: 2-1b
-    image: scrapinghub/httpbin:latest
-    command:
-      - "sh"
-      - "-c"
-      - >
-        while true; do
-          sleep 10;
-          curl http://coruscanthealth:52773/intersystems/fhir/r5/metadata;
-        done
+  replicas: 1
+  selector:
+    matchLabels:
+      org: empire
+      class: medicaldroid
+  template:
+    metadata:
+      labels:
+        org: empire
+        class: medicaldroid
+        app.kubernetes.io/name: 21-b
+    spec:
+      containers:
+      - name: 21-b
+        image: scrapinghub/httpbin:latest
+        imagePullPolicy: IfNotPresent
+        command:
+          - "sh"
+          - "-c"
+          - >
+            while true; do
+              sleep 10;
+              curl http://coruscanthealth:52773/intersystems/fhir/r5/metadata;
+            done
 ---
-apiVersion: v1
-kind: Pod
+apiVersion: apps/v1
+kind: Deployment
 metadata:
   name: payer
   labels:
-    app.kubernetes.io/name: coruscanthealth
-    org: republic
-    class: payer
+    app.kubernetes.io/name: payer
 spec:
-  containers:
-  - name: payer
-    image: scrapinghub/httpbin:latest
-    command:
-      - "sh"
-      - "-c"
-      - >
-        while true; do
-          sleep 10;
-          curl http://coruscanthealth:52773/intersystems/fhir/r5/metadata;
-        done
+  replicas: 1
+  selector:
+    matchLabels:
+      org: empire
+      class: payer
+  template:
+    metadata:
+      labels:
+        org: empire
+        class: medicaldroid
+        app.kubernetes.io/name: payer
+    spec:
+      containers:
+      - name: payer
+        image: scrapinghub/httpbin:latest
+        imagePullPolicy: IfNotPresent
+        command:
+          - "sh"
+          - "-c"
+          - >
+            while true; do
+              sleep 10;
+              curl http://coruscanthealth:52773/intersystems/fhir/r5/metadata;
+            done
