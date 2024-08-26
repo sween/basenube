@@ -44,12 +44,7 @@ metadata:
   labels:
     org: empire
     class: medicaldroid
-    app.kubernetes.io/name: fx-6
-spec:
-  selector:
-    matchLabels:
-      org: empire
-      class: medicaldroid
+    app.kubernetes.io/name: fx6
   containers:
   - name: fx-6
     image: scrapinghub/httpbin:latest
