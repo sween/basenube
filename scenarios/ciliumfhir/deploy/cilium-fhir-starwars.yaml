@@ -53,7 +53,7 @@ spec:
     metadata:
       labels:
         org: empire
-        class: medicaldroid
+        class: medicaldroid-surgical
         app.kubernetes.io/name: fx-6
     spec:
       containers:
@@ -85,7 +85,7 @@ spec:
     metadata:
       labels:
         org: empire
-        class: medicaldroid
+        class: medicaldroid-medical-assist
         app.kubernetes.io/name: dd-13
     spec:
       containers:
@@ -117,7 +117,7 @@ spec:
     metadata:
       labels:
         org: empire
-        class: medicaldroid
+        class: medicaldroid-medical
         app.kubernetes.io/name: 21-b
     spec:
       containers:
