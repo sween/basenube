@@ -48,7 +48,7 @@ spec:
   selector:
     matchLabels:
       org: empire
-      class: medicaldroid
+      class: medicaldroid-surgical
   template:
     metadata:
       labels:
@@ -80,7 +80,7 @@ spec:
   selector:
     matchLabels:
       org: empire
-      class: medicaldroid
+      class: medicaldroid-medical-assist
   template:
     metadata:
       labels:
@@ -112,7 +112,7 @@ spec:
   selector:
     matchLabels:
       org: empire
-      class: medicaldroid
+      class: medicaldroid-medical
   template:
     metadata:
       labels:
@@ -144,12 +144,12 @@ spec:
   selector:
     matchLabels:
       org: empire
-      class: payer
+      class: payer-insurance
   template:
     metadata:
       labels:
         org: empire
-        class: payer
+        class: payer-insurance
         app.kubernetes.io/name: payer
     spec:
       containers:
