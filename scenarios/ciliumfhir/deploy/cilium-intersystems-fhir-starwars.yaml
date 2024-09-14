@@ -36,6 +36,30 @@ spec:
       - name: coruscanthealth
         image: docker.io/sween/ciliumfhir
         imagePullPolicy: IfNotPresent
+        command:
+          - "sh"
+          - "-c"
+          - >
+            cat > vader.json << 'EOF'
+            {
+              "name": [
+                {
+                  "use": "official",
+                  "family": "Vader",
+                  "given": [
+                    "Darth"
+                  ]
+                }
+              ],
+              "gender": "male",
+              "birthDate": "1977-05-25",
+              "resourceType": "Patient"
+            }
+            EOF
+            curl -X PUT \
+              -H "Content-Type: application/fhir+json" \
+              -d @request.json \
+              "http://coruscanthealth:52773/intersystems/fhir/r5/Patient/DarthVader"
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -66,7 +90,7 @@ spec:
           - >
             while true; do
               sleep 10;
-              curl http://coruscanthealth:52773/intersystems/fhir/r5/metadata;
+              curl http://coruscanthealth:52773/intersystems/fhir/r5/Patient/DarthVader;
             done
 ---
 apiVersion: apps/v1
@@ -98,7 +122,7 @@ spec:
           - >
             while true; do
               sleep 10;
-              curl http://coruscanthealth:52773/intersystems/fhir/r5/metadata;
+              curl http://coruscanthealth:52773/intersystems/fhir/r5/Patient/DarthVader;
             done
 ---
 apiVersion: apps/v1
@@ -130,37 +154,37 @@ spec:
           - >
             while true; do
               sleep 10;
-              curl http://coruscanthealth:52773/intersystems/fhir/r5/metadata;
+              curl http://coruscanthealth:52773/intersystems/fhir/r5/DarthVader;
             done
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: payer
-  labels:
-    app.kubernetes.io/name: payer
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      org: empire
-      class: payer-insurance
-  template:
-    metadata:
-      labels:
-        org: empire
-        class: payer-insurance
-        app.kubernetes.io/name: payer
-    spec:
-      containers:
-      - name: payer
-        image: scrapinghub/httpbin:latest
-        imagePullPolicy: IfNotPresent
-        command:
-          - "sh"
-          - "-c"
-          - >
-            while true; do
-              sleep 10;
-              curl http://coruscanthealth:52773/intersystems/fhir/r5/metadata;
-            done
+#---
+#apiVersion: apps/v1
+#kind: Deployment
+#metadata:
+#  name: payer
+#  labels:
+#    app.kubernetes.io/name: payer
+#spec:
+#  replicas: 1
+#  selector:
+#    matchLabels:
+#      org: empire
+#      class: payer-insurance
+#  template:
+#    metadata:
+#      labels:
+#        org: empire
+#        class: payer-insurance
+#        app.kubernetes.io/name: payer
+#    spec:
+#      containers:
+#      - name: payer
+#        image: scrapinghub/httpbin:latest
+#        imagePullPolicy: IfNotPresent
+#        command:
+#          - "sh"
+#          - "-c"
+#          - >
+#            while true; do
+#              sleep 10;
+#              curl http://coruscanthealth:52773/intersystems/fhir/r5/Patient/AnakinSkywalker;
+#            done
