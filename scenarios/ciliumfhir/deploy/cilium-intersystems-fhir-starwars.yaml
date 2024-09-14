@@ -36,30 +36,6 @@ spec:
       - name: coruscanthealth
         image: docker.io/sween/ciliumfhir
         imagePullPolicy: IfNotPresent
-        command:
-          - "sh"
-          - "-c"
-          - >
-            cat > vader.json << 'EOF'
-            {
-              "name": [
-                {
-                  "use": "official",
-                  "family": "Vader",
-                  "given": [
-                    "Darth"
-                  ]
-                }
-              ],
-              "gender": "male",
-              "birthDate": "1977-05-25",
-              "resourceType": "Patient"
-            }
-            EOF
-            curl -X PUT \
-              -H "Content-Type: application/fhir+json" \
-              -d @vader.json \
-              "http://coruscanthealth:52773/intersystems/fhir/r5/Patient/DarthVader"
 ---
 apiVersion: apps/v1
 kind: Deployment
