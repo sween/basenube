@@ -58,7 +58,7 @@ spec:
             EOF
             curl -X PUT \
               -H "Content-Type: application/fhir+json" \
-              -d @request.json \
+              -d @vader.json \
               "http://coruscanthealth:52773/intersystems/fhir/r5/Patient/DarthVader"
 ---
 apiVersion: apps/v1
