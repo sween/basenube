@@ -1,0 +1,32 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: payer
+  labels:
+    app.kubernetes.io/name: payer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      org: payer
+      class: payer-insurance
+  template:
+    metadata:
+      labels:
+        org: payer
+        class: payer-insurance
+        app.kubernetes.io/name: payer
+    spec:
+      containers:
+      - name: payer
+        image: scrapinghub/httpbin:latest
+        imagePullPolicy: IfNotPresent
+        command:
+          - "sh"
+          - "-c"
+          - >
+            while true; do
+              sleep 10;
+              curl -I http://coruscanthealth:52773/intersystems/fhir/r5/Patient/AnakinSkywalker;
+            done

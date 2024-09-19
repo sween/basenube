@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: 21-b
+  labels:
+    app.kubernetes.io/name: 21-b
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      org: empire
+      class: medicaldroid-medical
+  template:
+    metadata:
+      labels:
+        org: empire
+        class: medicaldroid-medical
+        app.kubernetes.io/name: 21-b
+    spec:
+      containers:
+      - name: 21-b
+        image: scrapinghub/httpbin:latest
+        imagePullPolicy: IfNotPresent
+        command:
+          - "sh"
+          - "-c"
+          - >
+            while true; do
+              sleep 10;
+              curl -I http://coruscanthealth:52773/intersystems/fhir/r5/Patient/DarthVader;
+            done
+
